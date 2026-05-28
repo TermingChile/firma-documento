@@ -6,7 +6,6 @@
   <title>Firmar Documento - PRUEBAFIRMA_1</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #f5f5f5;
@@ -17,249 +16,40 @@
       align-items: center;
       padding: 16px;
     }
-
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-      width: 100%;
-      max-width: 600px;
-    }
-
-    .header h1 {
-      font-size: 1.4rem;
-      color: #1a1a1a;
-      margin-bottom: 4px;
-    }
-
-    .header .doc-name {
-      font-size: 0.9rem;
-      color: #666;
-      background: #e8e8e8;
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-    }
-
-    .status-bar {
-      width: 100%;
-      max-width: 600px;
-      padding: 10px 16px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      font-size: 0.85rem;
-      text-align: center;
-      display: none;
-    }
-
-    .status-bar.success {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-      display: block;
-    }
-
-    .status-bar.error {
-      background: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-      display: block;
-    }
-
-    .status-bar.loading {
-      background: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffeeba;
-      display: block;
-    }
-
-    /* Visor del PDF */
-    .pdf-viewer {
-      width: 100%;
-      max-width: 600px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .pdf-viewer-header {
-      background: #2c3e50;
-      color: white;
-      padding: 10px 16px;
-      font-size: 0.85rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .pdf-frame {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-
-    @media (max-width: 480px) {
-      .pdf-frame { height: 300px; }
-    }
-
-    /* Sección de firma */
-    .signature-section {
-      width: 100%;
-      max-width: 600px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .signature-section-header {
-      background: #27ae60;
-      color: white;
-      padding: 12px 16px;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .signature-instructions {
-      padding: 12px 16px;
-      font-size: 0.85rem;
-      color: #555;
-      background: #f9f9f9;
-      border-bottom: 1px solid #eee;
-    }
-
-    .signature-container {
-      padding: 16px;
-    }
-
-    .signature-pad-wrapper {
-      border: 2px dashed #ccc;
-      border-radius: 8px;
-      position: relative;
-      background: #fefefe;
-      overflow: hidden;
-    }
-
-    .signature-pad-wrapper::after {
-      content: "Firma aquí";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ddd;
-      font-size: 1.2rem;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .signature-pad-wrapper.has-signature::after {
-      opacity: 0;
-    }
-
-    canvas#signature-pad {
-      width: 100%;
-      height: 180px;
-      display: block;
-      touch-action: none;
-      cursor: crosshair;
-    }
-
-    .signature-line {
-      position: absolute;
-      bottom: 30px;
-      left: 20px;
-      right: 20px;
-      border-bottom: 1px solid #ddd;
-      pointer-events: none;
-    }
-
-    .signature-label {
-      position: absolute;
-      bottom: 8px;
-      left: 20px;
-      font-size: 0.7rem;
-      color: #bbb;
-      pointer-events: none;
-    }
-
-    /* Datos del firmante */
-    .signer-info {
-      padding: 0 16px 16px;
-    }
-
-    .signer-info label {
-      display: block;
-      font-size: 0.8rem;
-      color: #555;
-      margin-bottom: 4px;
-      margin-top: 10px;
-    }
-
-    .signer-info input {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-
-    .signer-info input:focus {
-      outline: none;
-      border-color: #27ae60;
-    }
-
-    /* Botones */
-    .actions {
-      padding: 0 16px 16px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      flex: 1;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-clear {
-      background: #ecf0f1;
-      color: #666;
-    }
-
+    .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 600px; }
+    .header h1 { font-size: 1.4rem; color: #1a1a1a; margin-bottom: 4px; }
+    .header .doc-name { font-size: 0.9rem; color: #666; background: #e8e8e8; display: inline-block; padding: 4px 12px; border-radius: 20px; }
+    .status-bar { width: 100%; max-width: 600px; padding: 10px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.85rem; text-align: center; display: none; }
+    .status-bar.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; display: block; }
+    .status-bar.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; display: block; }
+    .status-bar.loading { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; display: block; }
+    .pdf-viewer { width: 100%; max-width: 600px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 20px; }
+    .pdf-viewer-header { background: #2c3e50; color: white; padding: 10px 16px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+    .pdf-frame { width: 100%; height: 400px; border: none; }
+    @media (max-width: 480px) { .pdf-frame { height: 300px; } }
+    .signature-section { width: 100%; max-width: 600px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 20px; }
+    .signature-section-header { background: #27ae60; color: white; padding: 12px 16px; font-size: 0.95rem; font-weight: 600; }
+    .signature-instructions { padding: 12px 16px; font-size: 0.85rem; color: #555; background: #f9f9f9; border-bottom: 1px solid #eee; }
+    .signature-container { padding: 16px; }
+    .signature-pad-wrapper { border: 2px dashed #ccc; border-radius: 8px; position: relative; background: #fefefe; overflow: hidden; }
+    .signature-pad-wrapper::after { content: "Firma aquí"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ddd; font-size: 1.2rem; pointer-events: none; transition: opacity 0.3s; }
+    .signature-pad-wrapper.has-signature::after { opacity: 0; }
+    canvas#signature-pad { width: 100%; height: 180px; display: block; touch-action: none; cursor: crosshair; }
+    .signature-line { position: absolute; bottom: 30px; left: 20px; right: 20px; border-bottom: 1px solid #ddd; pointer-events: none; }
+    .signature-label { position: absolute; bottom: 8px; left: 20px; font-size: 0.7rem; color: #bbb; pointer-events: none; }
+    .signer-info { padding: 0 16px 16px; }
+    .signer-info label { display: block; font-size: 0.8rem; color: #555; margin-bottom: 4px; margin-top: 10px; }
+    .signer-info input { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem; transition: border-color 0.2s; }
+    .signer-info input:focus { outline: none; border-color: #27ae60; }
+    .actions { padding: 0 16px 16px; display: flex; gap: 10px; }
+    .btn { flex: 1; padding: 14px; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-clear { background: #ecf0f1; color: #666; }
     .btn-clear:hover { background: #dfe6e9; }
-
-    .btn-sign {
-      background: #27ae60;
-      color: white;
-    }
-
+    .btn-sign { background: #27ae60; color: white; }
     .btn-sign:hover { background: #219a52; }
-    .btn-sign:disabled {
-      background: #95a5a6;
-      cursor: not-allowed;
-    }
-
-    .btn-sign.loading {
-      background: #7f8c8d;
-      position: relative;
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: auto;
-      padding-top: 20px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: #999;
-    }
+    .btn-sign:disabled { background: #95a5a6; cursor: not-allowed; }
+    .btn-sign.loading { background: #7f8c8d; position: relative; }
+    .footer { margin-top: auto; padding-top: 20px; text-align: center; font-size: 0.75rem; color: #999; }
   </style>
 </head>
 <body>
@@ -276,22 +66,21 @@
       <span>📄 Documento</span>
       <span>PRUEBAFIRMA_1.pdf</span>
     </div>
+    <!-- CORREGIDO: URL correcta de Google Drive Preview -->
     <iframe 
       class="pdf-frame" 
-      src="https://docs.google.com/viewer?srcid=1seJaAmGA8DUGr6UD1X5OkvXpVcvO0Zyf&pid=explorer&efb=false&a=v&chrome=false&embedded=true"
+      src="https://drive.google.com/file/d/1seJaAmGA8DUGr6UD1X5OkvXpVcvO0Zyf/preview"
       allow="autoplay">
-     iframe>
+    </iframe>
   </div>
 
   <div class="signature-section">
     <div class="signature-section-header">
       ✍️ Firma electrónica
     </div>
-
     <div class="signature-instructions">
       Usa tu dedo para dibujar tu firma en el recuadro de abajo. Puedes borrar y volver a firmar cuantas veces necesites.
     </div>
-
     <div class="signature-container">
       <div class="signature-pad-wrapper" id="padWrapper">
         <canvas id="signature-pad"></canvas>
@@ -299,15 +88,12 @@
         <div class="signature-label">Firma</div>
       </div>
     </div>
-
     <div class="signer-info">
       <label for="signerName">Nombre completo *</label>
       <input type="text" id="signerName" placeholder="Ej: María García López" required>
-
       <label for="signerEmail">Correo electrónico *</label>
       <input type="email" id="signerEmail" placeholder="Ej: maria@correo.com" required>
     </div>
-
     <div class="actions">
       <button class="btn btn-clear" onclick="clearSignature()">🗑️ Borrar</button>
       <button class="btn btn-sign" id="btnSign" onclick="submitSignature()">✅ Firmar Documento</button>
@@ -323,16 +109,17 @@
 
   <script>
     // ==========================================
-    // CONFIGURACIÓN - CAMBIA ESTOS VALORES
+    // CONFIGURACIÓN - ¡CORREGIDA!
     // ==========================================
-
-    // URL corregida sin duplicados de protocolo y apuntando al endpoint de test
-    const WEBHOOK_URL = 'https://unengaged-coil-lens.ngrok-free.dev/webhook-test/899941cd-919e-4ad4-8512-bd46418d06bd';
-    // ID del documento (para identificar qué PDF firmar)
+    
+    // 1. URL del Webhook: Debe coincidir con la ruta de tu nodo Webhook en n8n (/webhook/firma-documento)
+    // 2. Asegúrate de que la URL de ngrok sea la actual de tu terminal
+    const WEBHOOK_URL = 'https://unengaged-coil-lens.ngrok-free.dev/webhook/firma-documento';
+    
     const DOCUMENTO_ID = 'PRUEBAFIRMA_1';
 
     // ==========================================
-    // INICIALIZAR SIGNATURE PAD
+    // LÓGICA DE FIRMA
     // ==========================================
 
     const canvas = document.getElementById('signature-pad');
@@ -346,12 +133,10 @@
       velocityEffectWidth: true
     });
 
-    // Detectar cuando hay firma para ocultar el placeholder
     signaturePad.addEventListener('beginStroke', () => {
       padWrapper.classList.add('has-signature');
     });
 
-    // Ajustar canvas a pantalla (evita firma borrosa)
     function resizeCanvas() {
       const ratio = Math.max(window.devicePixelRatio || 1, 1);
       const rect = canvas.getBoundingClientRect();
@@ -364,12 +149,7 @@
     }
 
     window.addEventListener('resize', resizeCanvas);
-    // Pequeño delay para que el canvas tenga su tamaño final
     setTimeout(resizeCanvas, 100);
-
-    // ==========================================
-    // FUNCIONES
-    // ==========================================
 
     function clearSignature() {
       signaturePad.clear();
@@ -382,27 +162,17 @@
       bar.className = 'status-bar ' + type;
     }
 
-    function hideStatus() {
-      const bar = document.getElementById('statusBar');
-      bar.className = 'status-bar';
-    }
-
     async function submitSignature() {
-      // Validar firma
       if (signaturePad.isEmpty()) {
         showStatus('⚠️ Por favor dibuja tu firma antes de confirmar', 'error');
         return;
       }
-
-      // Validar nombre
       const nombre = document.getElementById('signerName').value.trim();
       if (!nombre) {
         showStatus('⚠️ Ingresa tu nombre completo', 'error');
         document.getElementById('signerName').focus();
         return;
       }
-
-      // Validar email
       const email = document.getElementById('signerEmail').value.trim();
       if (!email || !email.includes('@')) {
         showStatus('⚠️ Ingresa un correo electrónico válido', 'error');
@@ -410,19 +180,14 @@
         return;
       }
 
-      // Deshabilitar botón mientras se envía
       const btn = document.getElementById('btnSign');
       btn.disabled = true;
       btn.classList.add('loading');
       btn.textContent = '⏳ Enviando...';
-
       showStatus('📤 Procesando firma...', 'loading');
 
       try {
-        // Capturar firma como PNG (base64)
         const firmaPNG = signaturePad.toDataURL('image/png');
-
-        // Preparar datos para enviar
         const payload = {
           documento_id: DOCUMENTO_ID,
           firmante_nombre: nombre,
@@ -436,20 +201,14 @@
           }
         };
 
-        // Bloque de envío con bypass de ngrok incluido
         const response = await fetch(WEBHOOK_URL, {
           method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json',
-            'ngrok-skip-browser-warning': 'true'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
 
         if (response.ok) {
-          showStatus('✅ ¡Documento firmado correctamente! Se ha enviado confirmación a tu correo.', 'success');
-          
-          // Bloquear interfaz para evitar doble firma
+          showStatus('✅ ¡Documento firmado correctamente!', 'success');
           signaturePad.off();
           canvas.style.opacity = '0.5';
           document.getElementById('signerName').disabled = true;
@@ -458,16 +217,14 @@
         } else {
           throw new Error(`Error ${response.status}`);
         }
-
       } catch (error) {
         console.error('Error al enviar firma:', error);
-        showStatus('❌ Error al enviar la firma. Verifica tu conexión e intenta de nuevo.', 'error');
+        showStatus('❌ Error al enviar la firma. Revisa la consola (F12).', 'error');
         btn.disabled = false;
         btn.classList.remove('loading');
         btn.textContent = '✅ Firmar Documento';
       }
     }
   </script>
-
 </body>
 </html>
