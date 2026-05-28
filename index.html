@@ -264,33 +264,25 @@
 </head>
 <body>
 
-  <!-- Encabezado -->
   <div class="header">
     <h1>📝 Firma de Documento</h1>
     <span class="doc-name">📄 PRUEBAFIRMA_1.pdf</span>
   </div>
 
-  <!-- Barra de estado -->
   <div id="statusBar" class="status-bar"></div>
 
-  <!-- Visor del PDF -->
   <div class="pdf-viewer">
     <div class="pdf-viewer-header">
       <span>📄 Documento</span>
       <span>PRUEBAFIRMA_1.pdf</span>
     </div>
-    <!-- 
-      REEMPLAZA EL ID DEL ARCHIVO CON EL DE TU GOOGLE DRIVE
-      El formato del enlace es:
-      https://drive.google.com/file/d/TU_ID_AQUI/preview
-    -->
     <iframe 
       class="pdf-frame" 
-	src="https://docs.google.com/viewer?srcid=1seJaAmGA8DUGr6UD1X5OkvXpVcvO0Zyf&pid=explorer&efb=false&a=v&chrome=false&embedded=true"
-    </iframe>
+      src="https://docs.google.com/viewer?srcid=1seJaAmGA8DUGr6UD1X5OkvXpVcvO0Zyf&pid=explorer&efb=false&a=v&chrome=false&embedded=true"
+      allow="autoplay">
+     iframe>
   </div>
 
-  <!-- Sección de firma -->
   <div class="signature-section">
     <div class="signature-section-header">
       ✍️ Firma electrónica
@@ -308,7 +300,6 @@
       </div>
     </div>
 
-    <!-- Datos del firmante -->
     <div class="signer-info">
       <label for="signerName">Nombre completo *</label>
       <input type="text" id="signerName" placeholder="Ej: María García López" required>
@@ -317,7 +308,6 @@
       <input type="email" id="signerEmail" placeholder="Ej: maria@correo.com" required>
     </div>
 
-    <!-- Botones -->
     <div class="actions">
       <button class="btn btn-clear" onclick="clearSignature()">🗑️ Borrar</button>
       <button class="btn btn-sign" id="btnSign" onclick="submitSignature()">✅ Firmar Documento</button>
@@ -329,7 +319,6 @@
     Fecha y hora del servidor se registran al firmar
   </div>
 
-  <!-- Signature Pad -->
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
 
   <script>
@@ -337,10 +326,10 @@
     // CONFIGURACIÓN - CAMBIA ESTOS VALORES
     // ==========================================
 
-// Tu webhook de pruebas real combinado con tu ngrok actual
-const WEBHOOK_URL = 'https://unengaged-coil-lens.ngrok-free.dev/webhook-test/899941cd-919e-4ad4-8512-bd46418d06bd';
-// ID del documento (para identificar qué PDF firmar)
-const DOCUMENTO_ID = 'PRUEBAFIRMA_1';
+    // URL corregida sin duplicados de protocolo y apuntando al endpoint de test
+    const WEBHOOK_URL = 'https://unengaged-coil-lens.ngrok-free.dev/webhook-test/899941cd-919e-4ad4-8512-bd46418d06bd';
+    // ID del documento (para identificar qué PDF firmar)
+    const DOCUMENTO_ID = 'PRUEBAFIRMA_1';
 
     // ==========================================
     // INICIALIZAR SIGNATURE PAD
@@ -429,7 +418,7 @@ const DOCUMENTO_ID = 'PRUEBAFIRMA_1';
 
       showStatus('📤 Procesando firma...', 'loading');
 
-  try {
+      try {
         // Capturar firma como PNG (base64)
         const firmaPNG = signaturePad.toDataURL('image/png');
 
@@ -447,18 +436,15 @@ const DOCUMENTO_ID = 'PRUEBAFIRMA_1';
           }
         };
 
-        // ========================================================
-        // AQUÍ VA EL NUEVO BLOQUE (REEMPLAZANDO AL ANTERIOR FETCH)
-        // ========================================================
+        // Bloque de envío con bypass de ngrok incluido
         const response = await fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
-            'ngrok-skip-browser-warning': 'true' // Evita que ngrok bloquee la petición en el cel
+            'ngrok-skip-browser-warning': 'true'
           },
           body: JSON.stringify(payload)
         });
-        // ========================================================
 
         if (response.ok) {
           showStatus('✅ ¡Documento firmado correctamente! Se ha enviado confirmación a tu correo.', 'success');
