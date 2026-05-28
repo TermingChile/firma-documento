@@ -286,8 +286,7 @@
     -->
     <iframe 
       class="pdf-frame" 
-      src="https://drive.google.com/file/d/1seJaAmGA8DUGr6UD1X5OkvXpVcvO0Zyf/preview"
-      allow="autoplay">
+      src="https://drive.google.com/file/d/1seJaAmGA8DUGr6UD1X5OkvXpVcvO0Zyf/preview"      allow="autoplay">
     </iframe>
   </div>
 
@@ -338,11 +337,10 @@
     // CONFIGURACIÓN - CAMBIA ESTOS VALORES
     // ==========================================
 
-    // Tu webhook de n8n o Make.com (lo obtendrás al configurar el flujo)
-    const WEBHOOK_URL = 'https://https://unengaged-coil-lens.ngrok-free.dev/webhook/firma-documento';
-
-    // ID del documento (para identificar qué PDF firmar)
-    const DOCUMENTO_ID = 'PRUEBAFIRMA_1';
+// Tu webhook de pruebas real combinado con tu ngrok actual
+const WEBHOOK_URL = 'https://unengaged-coil-lens.ngrok-free.dev/webhook-test/899941cd-919e-4ad4-8512-bd46418d06bd';
+// ID del documento (para identificar qué PDF firmar)
+const DOCUMENTO_ID = 'PRUEBAFIRMA_1';
 
     // ==========================================
     // INICIALIZAR SIGNATURE PAD
@@ -431,7 +429,7 @@
 
       showStatus('📤 Procesando firma...', 'loading');
 
-      try {
+  try {
         // Capturar firma como PNG (base64)
         const firmaPNG = signaturePad.toDataURL('image/png');
 
@@ -449,12 +447,18 @@
           }
         };
 
-        // Enviar al webhook
+        // ========================================================
+        // AQUÍ VA EL NUEVO BLOQUE (REEMPLAZANDO AL ANTERIOR FETCH)
+        // ========================================================
         const response = await fetch(WEBHOOK_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true' // Evita que ngrok bloquee la petición en el cel
+          },
           body: JSON.stringify(payload)
         });
+        // ========================================================
 
         if (response.ok) {
           showStatus('✅ ¡Documento firmado correctamente! Se ha enviado confirmación a tu correo.', 'success');
